@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "1SqogXmoOUqpNYBNV6PWC8mCS93TvGreMAQGYgEzKF+bHJqCdB1eHLFnp9UYqw89LRhCTZ3RgEOUztZs/wTwOQ==",
+  "success": true,
+  "projectFilePath": "D:\\Users\\New\\source\\repos\\LinkShortener\\LinkShortener\\LinkShortener.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\New\\.nuget\\packages\\hashids.net\\1.7.0\\hashids.net.1.7.0.nupkg.sha512",
+    "C:\\Users\\New\\.nuget\\packages\\litedb\\5.0.17\\litedb.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}

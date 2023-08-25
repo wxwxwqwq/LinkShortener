@@ -1,0 +1,35 @@
+﻿@model Userr
+@{
+    ViewData["Title"] = "Login";
+}
+
+@if (Link.Authorized == null) {
+    <h1>Вход</h1>
+    <form method="post" asp-controller="Login" asp-action="ToLogIn">
+        <div class="mb-3">
+            <label class="form-label">Логин</label>
+            <div class="col-md-3">
+                <input asp-for="login" class="form-control">
+            </div>
+            <span asp-validation-for="login" class="text-danger"></span>    
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Пароль</label>
+            <div class="col-md-3">
+                <input asp-for="password" type="password" class="form-control">
+            </div>
+            <span asp-validation-for="password" class="text-danger"></span>
+            <span class="text-danger">@ViewBag.Message3</span>        
+        </div>
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+}
+else
+{
+    <form asp-controller="Login" asp-action="ToLogOut">
+        <div class="mb-3">
+            <label class="form-label">Вы вошли в учётную запись: @Link.Authorized.login</label>  
+        </div>
+        <button type="submit" class="btn btn-primary">Выйти</button>
+    </form>
+}

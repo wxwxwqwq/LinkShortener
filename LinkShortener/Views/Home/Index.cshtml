@@ -1,0 +1,51 @@
+﻿@model Link
+@{
+    ViewData["Title"] = "Shortener";
+}
+@if (Link.Authorized != null)
+{
+    <form method="post" asp-controller="Home" asp-action="ToShorten">
+        <div class="mb-3">
+            <label  class="form-label">Ведите ссылку</label>
+            <input type="url" asp-for="url" class="form-control">
+            <span asp-validation-for="url" class="text-danger"></span>   
+            <span class="text-danger">@ViewBag.Message</span>
+        </div>
+        <button type="submit" class="mb-3 btn btn-primary">Сократить</button>
+    </form>
+
+    @if (Link.UserLinks.Count > 0)
+    {
+        <div class="mb-3">
+            <label>Результат</label>
+        </div>
+        <div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Ссылка</th>
+                        <th>Дата создания</th>
+                        <th>Короткая ссылка</th>
+                        <th>Переходы</th>
+                    </tr>
+                    @foreach (var link in Link.AllLinks)
+                    {   
+                        if(link.creator == Link.Authorized.login)
+                        {                           
+                                <tr>
+                                    <td><a href="@link.url">@link.url</a></td>
+                                    <td>@link.dateOfCreation</td>
+                                    <td><a href="@link.shorturl">@link.shorturl</a></td>
+                                    <td>@link.clicks</td>                                    
+                                </tr>                         
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+else
+{
+    <h1 class ="text-center">Необходимо <a href="https://localhost:7198/Login">войти</a> в учётную запись или <a href="https://localhost:7198/Registration">зарегистрироваться</a></h1>
+}
